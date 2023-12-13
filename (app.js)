@@ -1,0 +1,30 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const formularioDiscusion = document.getElementById('formulario-discusion');
+    const foro = document.getElementById('foro');
+
+    formularioDiscusion.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const titulo = document.getElementById('titulo').value;
+        const mensaje = document.getElementById('mensaje').value;
+
+        // Aquí debes enviar los datos al servidor para guardar la nueva discusión en la base de datos.
+
+        // Por ahora, solo mostraremos la nueva discusión en el área del foro.
+        mostrarDiscusion(titulo, mensaje);
+
+        // Limpiar el formulario después de la publicación.
+        formularioDiscusion.reset();
+    });
+
+    // Función para mostrar una nueva discusión en el área del foro.
+    function mostrarDiscusion(titulo, mensaje) {
+        const nuevaDiscusion = document.createElement('div');
+        nuevaDiscusion.innerHTML = `
+            <h3>${titulo}</h3>
+            <p>${mensaje}</p>
+            <hr>
+        `;
+        foro.appendChild(nuevaDiscusion);
+    }
+});
